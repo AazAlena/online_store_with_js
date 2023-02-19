@@ -20,8 +20,10 @@ function add_sp(){
         card_item = evt.target.closest(`.card`);
         console.log(card_item)
         sidebar_list.innerHTML = ``;
+        sidebar_total.innerHTML = ``;
         food_title = card_item.querySelector(`.food-title`);
         food_price = card_item.querySelector(`.food-price`);
+        
         console.log(sp_items)
 
         if (card_item.classList.contains(`card-active`)){
@@ -34,11 +36,18 @@ function add_sp(){
             card_item.classList.add(`card-active`);
             console.log(sp_items);
         }
+
+        summa = 0;
+
         console.log(sp_items)
         for(i=0; i<sp_items.length; i++){
             sidebar_list.innerHTML += sp_items[i];
+            summa += Number(food_price.innerHTML);
         }
+        sidebar_total.innerHTML = `<div>Всего: ${summa}</div>`
+
     });
 }
 add_sp()
+
 
