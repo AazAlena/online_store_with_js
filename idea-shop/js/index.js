@@ -60,10 +60,7 @@ function searchByTitle() {
 
   let input = header.querySelector(`.search-input`);
   console.log(input, input.value)
-//   search.addEventListener(`click`, function(){
-    
-    
-    //   food_container.innerHTML = ``;
+
     // строка поиска 
     let search1 = input.value.toLowerCase();
 
@@ -92,19 +89,11 @@ function searchByTitle() {
             
         }
         
-        // full_sp_food_container.push(`<div class="card">
-        //                                 <img src="assets/goods/${i+1}.jpg">
-        //                                 <div class="card-body">
-        //                                     <span class="food-title">${food_title}</span>
-        //                                     <span class="food-price">${food_price}</span>
-        //                                 </div>
-        //                             </div>`)  
-        // console.log(sp_food_container, full_sp_food_container)
+        
     }
     return sp_food_container
-//   })
-}
 
+}
 
 function print_searchByTitle(){
   search.addEventListener(`click`, function(){
@@ -119,5 +108,6 @@ function print_searchByTitle(){
 
 print_searchByTitle()
 
+//magic for заказать
 
 
