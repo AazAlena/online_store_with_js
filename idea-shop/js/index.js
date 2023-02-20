@@ -1,7 +1,8 @@
 let container = document.querySelector(`.main-container`);
 let header = document.querySelector(`.header`)
-let card = header.querySelector(`.cart-container`);
-let sidebar = container.querySelector(`.sidebar`);
+let card = header.querySelector(`#card`);
+let sidebar = document.querySelector(`.sidebar`);
+let search = header.querySelector(`.search-button`);
 
 card.addEventListener ('click', function(){
     sidebar.classList.toggle(`hidden`);
@@ -11,11 +12,12 @@ let food_container = container.querySelector(`.food-container`);
 let sidebar_list = container.querySelector(`.sidebar-list`);
 let sidebar_total = container.querySelector(`.sidebar-total`);
 
-sp_items = [];
+//Вывод списка покупок и суммарной стоимости
 
 function add_sp(){
     // console.log(sidebar_total)
     // console.log(evt.target)
+    let sp_items = [];
     food_container.addEventListener(`click`, function(evt){
         card_item = evt.target.closest(`.card`);
         console.log(card_item)
@@ -49,5 +51,73 @@ function add_sp(){
     });
 }
 add_sp()
+
+//Поиск по form
+
+const sp_items = food_container.querySelectorAll(`.card`)
+
+function searchByTitle() {
+
+  let input = header.querySelector(`.search-input`);
+  console.log(input, input.value)
+//   search.addEventListener(`click`, function(){
+    
+    
+    //   food_container.innerHTML = ``;
+    // строка поиска 
+    let search1 = input.value.toLowerCase();
+
+    sp_food_container = [];
+
+    for (let i = 0; i < sp_items.length; i++) {
+                
+        let item_right = sp_items[i];
+        //вся информаия о карточке, чтобы вставть в шаблон
+        let food_title = item_right.querySelector(`.food-title`).innerHTML.toLowerCase();
+        
+        if(food_title.includes(search1)) {
+            console.log(`чето я дурында`)
+
+            let right_food_title = item_right.querySelector(`.food-title`).innerHTML;
+            let food_price = item_right.querySelector(`.food-price`).innerHTML;
+
+
+            sp_food_container.push(`<div class="card">
+            <img src="assets/goods/${i+1}.jpg">
+            <div class="card-body">
+            <span class="food-title">${right_food_title}</span>
+            <span class="food-price">${food_price}</span>
+            </div>
+            </div>`)   
+            
+        }
+        
+        // full_sp_food_container.push(`<div class="card">
+        //                                 <img src="assets/goods/${i+1}.jpg">
+        //                                 <div class="card-body">
+        //                                     <span class="food-title">${food_title}</span>
+        //                                     <span class="food-price">${food_price}</span>
+        //                                 </div>
+        //                             </div>`)  
+        // console.log(sp_food_container, full_sp_food_container)
+    }
+    return sp_food_container
+//   })
+}
+
+
+function print_searchByTitle(){
+  search.addEventListener(`click`, function(){
+    let sp_food_container = searchByTitle();
+    console.log(sp_food_container);
+    food_container.innerHTML = ``;
+    for(i=0; i<sp_food_container.length; i++){
+        food_container.innerHTML += sp_food_container[i]
+    }
+  })
+}
+
+print_searchByTitle()
+
 
 
