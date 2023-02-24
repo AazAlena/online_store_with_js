@@ -2,7 +2,11 @@ let container = document.querySelector(`.main-container`);
 let header = document.querySelector(`.header`)
 let card = header.querySelector(`#card`);
 let sidebar = document.querySelector(`.sidebar`);
+let order_button = document.querySelector(`.order-button`);
+
 let search = header.querySelector(`.search-button`);
+
+
 
 card.addEventListener ('click', function(){
     sidebar.classList.toggle(`hidden`);
@@ -11,6 +15,7 @@ card.addEventListener ('click', function(){
 let food_container = container.querySelector(`.food-container`);
 let sidebar_list = container.querySelector(`.sidebar-list`);
 let sidebar_total = container.querySelector(`.sidebar-total`);
+
 
 //Вывод списка покупок и суммарной стоимости
 
@@ -51,6 +56,8 @@ function add_sp(){
     });
 }
 add_sp()
+
+
 
 //Поиск по form
 
@@ -109,5 +116,47 @@ function print_searchByTitle(){
 print_searchByTitle()
 
 //magic for заказать
+
+let pay = document.querySelector(`.pay`);
+order_button.addEventListener(`click`, function(){
+    if (summa != 0){
+        pay.classList.remove(`d-none`);
+        food_container.classList.add(`d-none`);
+        sidebar.classList.add(`d-none`);
+    }
+});
+
+let ret = document.querySelector(`.return`);
+ret.addEventListener(`click`, function(){
+    
+    pay.classList.add(`d-none`);
+    food_container.classList.remove(`d-none`);
+    sidebar.classList.remove(`d-none`);
+    
+})
+
+let buyNode = document.querySelector(`.buy`);
+
+let cardnumber = document.querySelector(`#cardnumber`)
+let cvv = document.querySelector(`#cvv`)
+let name = document.querySelector(`#name`)
+
+
+buyNode.addEventListener(`click`, function(){
+    if (cardnumber.value!=`` && cvv.value!=`` && name.value!=``){
+        alert(`Оплата прошла успешно`)
+        pay.classList.add(`d-none`);
+        food_container.classList.remove(`d-none`);
+        sidebar.classList.remove(`d-none`);
+        cardnumber.value=``
+        cvv.value=``
+        name.value=``
+    
+    } else {
+        alert(`Не все поля заполнены`)
+    }
+    
+})
+
 
 

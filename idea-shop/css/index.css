@@ -204,3 +204,46 @@ button {
   color: #fff;
   background-color: RGBA(108, 117, 125, 1);
 }
+
+.d-none{
+  display: none;
+}
+.window_to_pay{
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.form-control{
+  width:200px;
+  height: 20px;
+  margin: 2%;
+  padding: 1%;
+  border: 1px solid #005bff;
+  border-radius: 7px;
+}
+
+.btn{
+  background-color: #005bff;
+  color:white;
+  border:1px solid #005bff;
+  border-radius: 7px;
+  width: 35%;
+  height: 7%;
+  margin: 2%;
+  padding: 1%;
+}
+
+.return{
+  background-color: white;
+  color: #005bff;
+}
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
